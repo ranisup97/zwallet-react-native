@@ -8,7 +8,7 @@ React Native merupakan suatu cross-platform framework yang dibuat oleh tim Faceb
 2. Sebagai salah satu alternatif dalam pengembangan aplikasi mobile, react native dapat digunakan untuk mengembangkan aplikasi mobile dalam 2 environment dalam satu kali proses development.
 
 * Cara kerja:
-React Native bekerja dengan dengan menanamkan file Javascript yang sudah di-bundle didalam aplikasi, dan menjalankan mereka secara local dari aplikasi yang kita buat.
+React Native bekerja dengan menanamkan file Javascript yang sudah di-bundle didalam aplikasi, dan menjalankan mereka secara local dari aplikasi yang kita buat.
 Untuk UI dan UX, React Native juga mengunakan Javascript untuk styling hampir mirip dengan CSS diweb namun dengan CamelCase.
 
 ZWallet is an application or feature developed to make it easier for people to do all their financial affairs. The solution that is already available to the people of Indonesia is an application called ZWallet. ZWallet can be opened on the website. ZWallet does not only provide services to support you when shopping.
