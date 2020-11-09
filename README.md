@@ -4,8 +4,8 @@
 
 React Native merupakan suatu cross-platform framework yang dibuat oleh tim Facebook untuk membuat mobile app (android & ios) dengan menggunakan javascript.
 * Kenapa harus react native? 
-1 Kode yang digunaan lebih simpel dan mudah
-2 Sebagai salah satu alternatif dalam pengembangan aplikasi mobile, react native dapat digunakan untuk mengembangkan aplikasi mobile dalam 2 environment dalam satu kali proses development.
+1. Kode yang digunaan lebih simpel dan mudah
+2. Sebagai salah satu alternatif dalam pengembangan aplikasi mobile, react native dapat digunakan untuk mengembangkan aplikasi mobile dalam 2 environment dalam satu kali proses development.
 
 * Cara kerja:
 React Native bekerja dengan dengan menanamkan file Javascript yang sudah di-bundle didalam aplikasi, dan menjalankan mereka secara local dari aplikasi yang kita buat.
