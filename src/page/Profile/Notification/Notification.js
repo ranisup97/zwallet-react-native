@@ -9,8 +9,7 @@ const Notification = () => {
                 <Image style={{marginTop: 20, marginLeft: 20 }} source={require('../../../assets/images/icons/arrow-left.png')} />
                 <Text style={{marginTop: 20,marginLeft: 20, fontSize: 20}}>Notification</Text>
                 </View>
-                <Text style={{padding: 15, color: 'grey', textAlign:'justify', paddingTop: 40}}>Enter your current 6 digits Zwallet PIN below to continue to the next steps.</Text>
-                
+        
                 <Text style={{padding: 15, color: 'grey', textAlign:'justify', paddingTop: 40}}>Today</Text>
                 
                 <View style={{paddingTop: 20, flexDirection: 'row', backgroundColor: '#fff',

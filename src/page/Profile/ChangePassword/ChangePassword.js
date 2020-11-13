@@ -4,9 +4,10 @@ import {Button, IconButton} from 'react-native-paper';
 
 const ChangePassword = (props) => {
 
-    const inputPassword = React.useRef();
-    const [username, setUsername] = React.useState(null);
+    const inputPassword = React.useRef()
     const [password, setPassword] = React.useState(null);
+    const [passwordRepeat, setPasswordRepeat] = React.useState(null);
+    const [passwordNew, setPasswordNew] = React.useState(null);
     const [loading, setLoading] = React.useState(false);
 
     const onSubmit = () => {
@@ -16,7 +17,7 @@ const ChangePassword = (props) => {
             `Pasword has change`,
             ToastAndroid.SHORT,
           );
-          props.navigation.navigate('MainApp');
+          props.navigation.navigate('Profile');
           setLoading(false);
         }, 3000);
         };
@@ -50,13 +51,13 @@ const ChangePassword = (props) => {
             <Image source={require('../../../assets/images/icons/lock.png')} style={{marginTop: 10}}/>
                 <TextInput
                     ref={inputPassword}
-                    value={password}
+                    value={passwordRepeat}
                     placeholder="New Password"
                     autoCapitalize={'none'}
                     secureTextEntry={true}
                     // returnKeyType="send"
                     // returnKeyLabel='Masuk'
-                    onChangeText={(text) => setPassword(text)}
+                    onChangeText={(text) => setPasswordRepeat(text)}
                     onSubmitEditing={() => onSubmit()}
                   />
         </View>
@@ -65,13 +66,13 @@ const ChangePassword = (props) => {
             <Image source={require('../../../assets/images/icons/lock.png')} style={{marginTop: 10}}/>
                 <TextInput
                     ref={inputPassword}
-                    value={password}
+                    value={passwordNew}
                     placeholder="Repeat Password"
                     autoCapitalize={'none'}
                     secureTextEntry={true}
                     // returnKeyType="send"
                     // returnKeyLabel='Masuk'
-                    onChangeText={(text) => setPassword(text)}
+                    onChangeText={(text) => setPasswordNew(text)}
                     onSubmitEditing={() => onSubmit()}
                   />
         </View>

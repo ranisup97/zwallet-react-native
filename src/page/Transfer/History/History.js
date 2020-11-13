@@ -12,7 +12,7 @@ const History = () => {
 
             <View style={{paddingTop: 20, flexDirection: 'row', backgroundColor: '#fff',
                 marginTop: 15, borderRadius: 25, paddingBottom: 20}}>
-                <Image source = {require('../../../assets/images/michael.png')} style={{marginLeft: 10}}/>
+                <Image source = {require('../../../assets/images/jessica.png')} style={{marginLeft: 10}}/>
                 <View tyle={{marginTop: 10}}>
                 <Text style={{fontSize: 16, marginTop: 10, marginLeft: 10}}>Samuel Suhi</Text>
                 <Text style={{marginLeft: 10}}>Transfer</Text>
@@ -21,7 +21,7 @@ const History = () => {
             </View>
             <View style={{paddingTop: 20, flexDirection: 'row', backgroundColor: '#fff',
                 marginTop: 15, borderRadius: 25, paddingBottom: 20}}>
-                <Image source = {require('../../../assets/images/michael.png')} style={{marginLeft: 10}}/>
+                <Image source = {require('../../../assets/images/jessica.png')} style={{marginLeft: 10}}/>
                 <View tyle={{marginTop: 10}}>
                 <Text style={{fontSize: 16, marginTop: 10, marginLeft: 10}}>Samuel Suhi</Text>
                 <Text style={{marginLeft: 10}}>Transfer</Text>
@@ -32,7 +32,7 @@ const History = () => {
 
             <View style={{paddingTop: 20, flexDirection: 'row', backgroundColor: '#fff',
                 marginTop: 15, borderRadius: 25, paddingBottom: 20}}>
-                <Image source = {require('../../../assets/images/michael.png')} style={{marginLeft: 10}}/>
+                <Image source = {require('../../../assets/images/jessica.png')} style={{marginLeft: 10}}/>
                 <View tyle={{marginTop: 10}}>
                 <Text style={{fontSize: 16, marginTop: 10, marginLeft: 10}}>Samuel Suhi</Text>
                 <Text style={{marginLeft: 10}}>Transfer</Text>
@@ -42,7 +42,7 @@ const History = () => {
 
             <View style={{paddingTop: 20, flexDirection: 'row', backgroundColor: '#fff',
                 marginTop: 15, borderRadius: 25, paddingBottom: 20}}>
-                <Image source = {require('../../../assets/images/michael.png')} style={{marginLeft: 10}}/>
+                <Image source = {require('../../../assets/images/jessica.png')} style={{marginLeft: 10}}/>
                 <View tyle={{marginTop: 10}}>
                 <Text style={{fontSize: 16, marginTop: 10, marginLeft: 10}}>Samuel Suhi</Text>
                 <Text style={{marginLeft: 10}}>Transfer</Text>
@@ -52,7 +52,7 @@ const History = () => {
 
             <View style={{paddingTop: 20, flexDirection: 'row', backgroundColor: '#fff',
                 marginTop: 15, borderRadius: 25, paddingBottom: 20}}>
-                <Image source = {require('../../../assets/images/michael.png')} style={{marginLeft: 10}}/>
+                <Image source = {require('../../../assets/images/jessica.png')} style={{marginLeft: 10}}/>
                 <View tyle={{marginTop: 10}}>
                 <Text style={{fontSize: 16, marginTop: 10, marginLeft: 10}}>Samuel Suhi</Text>
                 <Text style={{marginLeft: 10}}>Transfer</Text>

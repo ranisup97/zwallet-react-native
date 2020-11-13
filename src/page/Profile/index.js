@@ -1,12 +1,29 @@
 import React from 'react'
 import { StyleSheet, Text, View, ScrollView,Image } from 'react-native'
 import {Button, IconButton} from 'react-native-paper';
+import { AuthLogout}  from '../../redux/actions/Auth'
+import { GetUsersById}  from '../../redux/actions/Users'
 
+import {useDispatch, useSelector} from 'react-redux';
 const Profile = (props) => {
+    // const dispatch = useDispatch();
     const [loading, setLoading] = React.useState(false);
     const [load, setLoad] = React.useState(false);
     const [loadPIN, setLoadPIN] = React.useState(false);
     const [loadNotif, setLoadNotif] = React.useState(false);
+    // const [logout, setLogout]= React.useState(false);
+    const dispatch = useDispatch()
+  console.log(props)
+
+  const {data} = useSelector((s)=> s.Users)
+  const Auth = useSelector((s)=> s.Auth)
+  React.useEffect(() => {
+    dispatch(GetUsersById({
+      id: Auth.data.token.id,
+      token: Auth.data.token.token
+    }))
+    console.log(data, 'ha')
+  }, []);
 
     const onSubmit = () => {
         setLoading(true);
@@ -39,6 +56,14 @@ const Profile = (props) => {
         setLoadNotif(false);
         }, 1000);
     };
+
+    // const onLogout = () => {
+    //     setLogout(true);
+    //     setTimeout(() => {
+    //     props.navigation.navigate('Login');
+    //     setLogout(false);
+    //     }, 1000);
+    // };
     
     return (
         <ScrollView style={{backgroundColor: '#F8F9FF', flex:3}}>
@@ -53,8 +78,8 @@ const Profile = (props) => {
                     <Image source = {require('../../assets/images/icons/edit-2.png')} style={{marginTop: 5, marginRight:5}}/>
                     <Text >Edit</Text>
                 </View>
-                <Text style={{fontWeight: 'bold', fontSize: 18}}>Robert Chandler</Text>
-                <Text>0895411829199</Text>
+                <Text style={{fontWeight: 'bold', fontSize: 18}}>{data.firstName} {data.lastName} </Text>
+                <Text>{`+62 ${data.phone}`}</Text>
 
                 <View style={{flexDirection: 'row', backgroundColor: '#E7E3E1', borderRadius: 10, marginTop: 30}}>
                     <Button
@@ -106,11 +131,13 @@ const Profile = (props) => {
 
                 <View style={{paddingRight: 130,flexDirection: 'row', backgroundColor: '#E7E3E1', borderRadius: 10, marginTop: 10}}>
                     <Button
-                            title="Press me"
+                            
+                            onPress={() => dispatch(AuthLogout())}
 
-                            disabled
+                            // disabled={logout}
+                            // loading={logout}
                             textTransform= 'lowercase'
-                            onPress={() => onLogout()}
+                            color='grey'
                         ><Text>Logout</Text>
                         
                         </Button>   

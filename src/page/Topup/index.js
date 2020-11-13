@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, ScrollView, Image } from 'react-native'
 
 const Topup = () => {
     return (
-        <ScrollView style={{backgroundColor: '#F8F9FF', flex: 3}}>
+        <ScrollView>
         <View style={{flexDirection: 'row'}}>
             <Image style={{marginTop: 20, marginLeft: 20 }} source={require('../../assets/images/icons/arrow-left.png')} />
             <Text style={{marginTop: 20,marginLeft: 20, fontSize: 20}}>Top Up</Text>

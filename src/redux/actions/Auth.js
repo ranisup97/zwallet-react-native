@@ -28,12 +28,12 @@ export const AuthLogin = (fields) => {
         return Axios({
             method: 'POST',
             data: fields,
-            url: 'https://travel.mahirtechno.xyz/api/login'
+            url: 'http://192.168.100.4:8000/api/v1/auth/login'
         }).then((res)=> {
             const data = res.data
             console.log(data, 'dataas')
             ToastAndroid.show(
-                `Login Sukses, Selamat Datang ${data.data.name}`,
+                `Login Succesfully, welcome ${data.token.firstName}`,
                 ToastAndroid.SHORT,
             );
             dispatch(AuthLoginSuccess(data))

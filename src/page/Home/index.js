@@ -2,11 +2,27 @@ import React from 'react'
 import { StyleSheet,Text, View, ScrollView, Image } from 'react-native'
 import {Button, IconButton} from 'react-native-paper';
 
+import { GetUsersById } from "../../redux/actions/Users";
+import {useDispatch, useSelector} from 'react-redux';
 const Home = (props) => {
+  const dispatch = useDispatch()
+  console.log(props)
+
+  const {data} = useSelector((s)=> s.Users)
+  const Auth = useSelector((s)=> s.Auth)
+  React.useEffect(() => {
+    dispatch(GetUsersById({
+      id: Auth.data.token.id,
+      token: Auth.data.token.token
+    }))
+    console.log(data, 'ha')
+  }, []);
+
   const [loading, setLoading] = React.useState(false);
-  
   const [load, setLoad] = React.useState(false);
   const [history, setHistory] = React.useState();
+  const [profile, setProfile] = React.useState();
+
 
   const onHistory = () => {
     setHistory(true);
@@ -31,26 +47,45 @@ const Home = (props) => {
             setLoad(false);
           }, 1000);
           };
+
+          const onProfile = () => {
+            setProfile(true);
+            setTimeout(() => {
+              props.navigation.navigate('Profile');
+              setProfile(false);
+            }, 1000);
+            };
   return (
-    <ScrollView style={{flex: 3, backgroundColor: '#F8F9FF'}}>
+    <>
+    <ScrollView>
+      
+          
+        
       <View style={{paddingTop: 20, flexDirection: 'row'}}>
         <Image source = {require('../../assets/images/michael.png')}/>
         <View tyle={{marginTop: 10}}>
         <Text style={{fontSize: 15, marginTop: 10, marginLeft: 10}}>Hello,</Text>
-        <Text style={{fontWeight: 'bold', fontSize: 19, marginLeft: 10}}>Robert  Chandler</Text>
+        <Text style={{fontWeight: 'bold', fontSize: 19, marginLeft: 10, color:'black'}}
+        onPress={() => onProfile()}
+        value={profile}
+        >{data.firstName} {data.lastName}</Text>
         </View>
-        <Image style={{marginTop: 30, marginLeft: '30%'}} source={require('../../assets/images/icons/bell.png')} />
+        <Image style={{marginTop: 30, marginLeft: '40%'}} source={require('../../assets/images/icons/bell.png')} />
         
       </View>
+      
+    
+
+
     <View style={styles.box} >
      
       <Text style={{color: '#fff'}}>Balance</Text>
       <Text style={{
         color: '#fff', fontWeight:'bold',fontSize: 30,
-      }}>120.000</Text>
+      }}>{data.balance}</Text>
       <Text style={{
         color: '#fff'
-      }}>0895411829199</Text>
+      }}>{`+62 ${data.phone}`}</Text>
 
     
 
@@ -80,6 +115,7 @@ const Home = (props) => {
       </View>
 
       </View>
+      
       <View style={{flexDirection: 'row'}}>
       <View>
         <Text style={{marginTop: 20,marginLeft: 10 }}>
@@ -96,9 +132,22 @@ const Home = (props) => {
         </View>
       </View>
 
+      
+
+      <View style={{paddingTop: 20, flexDirection: 'row', backgroundColor: '#fff',
+        marginTop: 20, borderRadius: 25, paddingBottom: 20}}
+        >
+        <Image source = {require('../../assets/images/jessica.png')} style={{marginLeft: 10}}/>
+        <View tyle={{marginTop: 10}}>
+        <Text style={{fontSize: 16, marginTop: 10, marginLeft: 10}}>Samuel</Text>
+        <Text style={{marginLeft: 10}}>Transfer</Text>
+        </View>
+        <Text style={{color: '#1EC15F', marginTop: 20,marginLeft: '30%'}}>+Rp50.000</Text>
+      </View>
+
       <View style={{paddingTop: 20, flexDirection: 'row', backgroundColor: '#fff',
         marginTop: 20, borderRadius: 25, paddingBottom: 20}}>
-        <Image source = {require('../../assets/images/michael.png')} style={{marginLeft: 10}}/>
+        <Image source = {require('../../assets/images/jessica.png')} style={{marginLeft: 10}}/>
         <View tyle={{marginTop: 10}}>
         <Text style={{fontSize: 16, marginTop: 10, marginLeft: 10}}>Samuel Suhi</Text>
         <Text style={{marginLeft: 10}}>Transfer</Text>
@@ -108,7 +157,7 @@ const Home = (props) => {
 
       <View style={{paddingTop: 20, flexDirection: 'row', backgroundColor: '#fff',
         marginTop: 20, borderRadius: 25, paddingBottom: 20}}>
-        <Image source = {require('../../assets/images/michael.png')} style={{marginLeft: 10}}/>
+        <Image source = {require('../../assets/images/jessica.png')} style={{marginLeft: 10}}/>
         <View tyle={{marginTop: 10}}>
         <Text style={{fontSize: 16, marginTop: 10, marginLeft: 10}}>Samuel Suhi</Text>
         <Text style={{marginLeft: 10}}>Transfer</Text>
@@ -118,17 +167,7 @@ const Home = (props) => {
 
       <View style={{paddingTop: 20, flexDirection: 'row', backgroundColor: '#fff',
         marginTop: 20, borderRadius: 25, paddingBottom: 20}}>
-        <Image source = {require('../../assets/images/michael.png')} style={{marginLeft: 10}}/>
-        <View tyle={{marginTop: 10}}>
-        <Text style={{fontSize: 16, marginTop: 10, marginLeft: 10}}>Samuel Suhi</Text>
-        <Text style={{marginLeft: 10}}>Transfer</Text>
-        </View>
-        <Text style={{color: '#1EC15F', marginTop: 20,marginLeft: '30%'}}>+Rp50.000</Text>
-      </View>
-
-      <View style={{paddingTop: 20, flexDirection: 'row', backgroundColor: '#fff',
-        marginTop: 20, borderRadius: 25, paddingBottom: 20}}>
-        <Image source = {require('../../assets/images/michael.png')} style={{marginLeft: 10}}/>
+        <Image source = {require('../../assets/images/jessica.png')} style={{marginLeft: 10}}/>
         <View tyle={{marginTop: 10}}>
         <Text style={{fontSize: 16, marginTop: 10, marginLeft: 10}}>Samuel Suhi</Text>
         <Text style={{marginLeft: 10}}>Transfer</Text>
@@ -136,9 +175,11 @@ const Home = (props) => {
         <Text style={{color: '#1EC15F', marginTop: 20,marginLeft: '30%'}}>+Rp50.000</Text>
       </View>
       
+        
     </ScrollView>
-  )
-}
+    </>
+  );
+};
 
 export default Home
 

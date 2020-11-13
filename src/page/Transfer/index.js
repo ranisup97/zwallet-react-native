@@ -2,7 +2,19 @@ import React from 'react'
 import { StyleSheet, Text, View, Image, TextInput, ScrollView } from 'react-native'
 import responsiveFontSize from 'react-native-responsive-dimensions'
 
-const Transfer = () => {
+const Transfer = (props) => {
+    
+    const [amount, setAmount] = React.useState(false);
+
+    
+
+        const onAmount = () => {
+            setAmount(true);
+            setTimeout(() => {
+              props.navigation.navigate('InputAmount');
+              setAmount(false);
+            }, 1000);
+            };
     return (
         <ScrollView style={{backgroundColor: '#F8F9FF', flex: 3}}>
             <View style={{flexDirection: 'row'}}>
@@ -31,7 +43,21 @@ const Transfer = () => {
 
             <View style={{paddingTop: 20, flexDirection: 'row', backgroundColor: '#fff',
                 marginTop: 15, borderRadius: 25, paddingBottom: 20}}>
-                <Image source = {require('../../assets/images/michael.png')} style={{marginLeft: 10}}/>
+                <Image source = {require('../../assets/images/momo.png')} style={{marginLeft: 10}}/>
+
+                <View tyle={{marginTop: 10}}>
+                <Text style={{fontSize: 16, marginTop: 10, marginLeft: 10}}
+                value={amount}
+                onPress={() => onAmount()}
+                >Samuel Suhi</Text>
+                <Text style={{marginLeft: 10}}>Transfer</Text>
+                </View>
+                <Text style={{color: '#1EC15F', marginTop: 20,marginLeft: '30%'}}>+Rp50.000</Text>
+            </View>
+            
+            <View style={{paddingTop: 20, flexDirection: 'row', backgroundColor: '#fff',
+                marginTop: 20, borderRadius: 15, paddingBottom: 20}}>
+                <Image source = {require('../../assets/images/momo.png')} style={{marginLeft: 10}}/>
                 <View tyle={{marginTop: 10}}>
                 <Text style={{fontSize: 16, marginTop: 10, marginLeft: 10}}>Samuel Suhi</Text>
                 <Text style={{marginLeft: 10}}>Transfer</Text>
@@ -41,7 +67,7 @@ const Transfer = () => {
             
             <View style={{paddingTop: 20, flexDirection: 'row', backgroundColor: '#fff',
                 marginTop: 20, borderRadius: 15, paddingBottom: 20}}>
-                <Image source = {require('../../assets/images/michael.png')} style={{marginLeft: 10}}/>
+                <Image source = {require('../../assets/images/momo.png')} style={{marginLeft: 10}}/>
                 <View tyle={{marginTop: 10}}>
                 <Text style={{fontSize: 16, marginTop: 10, marginLeft: 10}}>Samuel Suhi</Text>
                 <Text style={{marginLeft: 10}}>Transfer</Text>
@@ -51,7 +77,7 @@ const Transfer = () => {
             
             <View style={{paddingTop: 20, flexDirection: 'row', backgroundColor: '#fff',
                 marginTop: 20, borderRadius: 15, paddingBottom: 20}}>
-                <Image source = {require('../../assets/images/michael.png')} style={{marginLeft: 10}}/>
+                <Image source = {require('../../assets/images/momo.png')} style={{marginLeft: 10}}/>
                 <View tyle={{marginTop: 10}}>
                 <Text style={{fontSize: 16, marginTop: 10, marginLeft: 10}}>Samuel Suhi</Text>
                 <Text style={{marginLeft: 10}}>Transfer</Text>
@@ -61,17 +87,7 @@ const Transfer = () => {
             
             <View style={{paddingTop: 20, flexDirection: 'row', backgroundColor: '#fff',
                 marginTop: 20, borderRadius: 15, paddingBottom: 20}}>
-                <Image source = {require('../../assets/images/michael.png')} style={{marginLeft: 10}}/>
-                <View tyle={{marginTop: 10}}>
-                <Text style={{fontSize: 16, marginTop: 10, marginLeft: 10}}>Samuel Suhi</Text>
-                <Text style={{marginLeft: 10}}>Transfer</Text>
-                </View>
-                <Text style={{color: '#1EC15F', marginTop: 20,marginLeft: '30%'}}>+Rp50.000</Text>
-            </View>
-            
-            <View style={{paddingTop: 20, flexDirection: 'row', backgroundColor: '#fff',
-                marginTop: 20, borderRadius: 15, paddingBottom: 20}}>
-                <Image source = {require('../../assets/images/michael.png')} style={{marginLeft: 10}}/>
+                <Image source = {require('../../assets/images/momo.png')} style={{marginLeft: 10}}/>
                 <View tyle={{marginTop: 10}}>
                 <Text style={{fontSize: 16, marginTop: 10, marginLeft: 10}}>Samuel Suhi</Text>
                 <Text style={{marginLeft: 10}}>Transfer</Text>
@@ -81,7 +97,7 @@ const Transfer = () => {
 
             <View style={{paddingTop: 20, flexDirection: 'row', backgroundColor: '#fff',
                 marginTop: 20, borderRadius: 15, paddingBottom: 20}}>
-                <Image source = {require('../../assets/images/michael.png')} style={{marginLeft: 10}}/>
+                <Image source = {require('../../assets/images/momo.png')} style={{marginLeft: 10}}/>
                 <View tyle={{marginTop: 10}}>
                 <Text style={{fontSize: 16, marginTop: 10, marginLeft: 10}}>Samuel Suhi</Text>
                 <Text style={{marginLeft: 10}}>Transfer</Text>
