@@ -2,8 +2,10 @@ import React from 'react'
 import { StyleSheet, View, 
     TextInput, 
     ScrollView, 
-    SafeAreaView, Image, 
-    ToastAndroid} from 'react-native'
+    SafeAreaView, 
+    Image, 
+    ToastAndroid,
+    Keyboard} from 'react-native'
 import {
     responsiveFontSize,
   } from "react-native-responsive-dimensions";
@@ -17,9 +19,12 @@ const Login = (props) => {
     const [email, setEmail] = React.useState(null);
     const [password, setPassword] = React.useState(null);
     const [loading, setLoading] = React.useState(false);
+    
+    const [width, setWidth] = React.useState(390);
     const [hidePassword, setHidePassword] = React.useState(true)
     const dispatch = useDispatch()
     const onSubmit = () => {
+      Keyboard.dismiss()
         setLoading(true);
         dispatch(
         AuthLogin({
@@ -27,6 +32,25 @@ const Login = (props) => {
             password: password,
         })
         );
+    };
+
+    React.useEffect(() => {
+      Keyboard.addListener("keyboardDidShow", _keyboardDidShow);
+      Keyboard.addListener("keyboardDidHide", _keyboardDidHide);
+  
+      // cleanup function
+      return () => {
+        Keyboard.removeListener("keyboardDidShow", _keyboardDidShow);
+        Keyboard.removeListener("keyboardDidHide", _keyboardDidHide);
+      };
+    }, []);
+
+    const _keyboardDidShow = () => {
+      setWidth(390)
+    };
+  
+    const _keyboardDidHide = () => {
+      setWidth(390)
     };
     
     const [register, setRegister] = React.useState(false);
@@ -42,7 +66,7 @@ const Login = (props) => {
     return (
         <>
         <ScrollView  keyboardShouldPersistTaps='always'>
-        <Text style={style.logo}>Zwallet
+        <Text style={[style.logo, {width:width}]}>Zwallet
           
         </Text>
         <View style={style.box}>
