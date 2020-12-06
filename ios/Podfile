@@ -3,12 +3,12 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'zwalletAndroid' do
+target 'zwallet' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
 
-  target 'zwalletAndroidTests' do
+  target 'zwalletTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -23,10 +23,10 @@ target 'zwalletAndroid' do
   end
 end
 
-target 'zwalletAndroid-tvOS' do
-  # Pods for zwalletAndroid-tvOS
+target 'zwallet-tvOS' do
+  # Pods for zwallet-tvOS
 
-  target 'zwalletAndroid-tvOSTests' do
+  target 'zwallet-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

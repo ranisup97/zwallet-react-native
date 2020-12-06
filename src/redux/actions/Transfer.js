@@ -1,21 +1,21 @@
 import Axios from 'axios';
 import {ToastAndroid} from 'react-native';
 
-const UsersRequest = () => {
+const TransferRequest = () => {
   return {
-    type: 'USERS_REQUEST',
+    type: 'TRANSFER_REQUEST',
   };
 };
 
-const UsersSuccess = (data) => {
+const TransferSuccess = (data) => {
   return {
-    type: 'USERS_SUCCESS',
+    type: 'TRANSFER_SUCCESS',
     payload: data,
   };
 };
-const UsersError = (error) => {
+const TransferError = (error) => {
   return {
-    type: 'USERS_ERROR',
+    type: 'TRANSFER_ERROR',
     payload: error,
   };
 };
@@ -60,12 +60,12 @@ const UserEditError = (error) => {
   };
 };
 
-export const GetUsersById = (fields) => {
+export const GetTransferById = (fields) => {
   return (dispatch) => {
-    dispatch(UsersRequest());
+    dispatch(TransferRequest());
     return Axios({
       method: 'GET',
-      url: `http://192.168.100.8:8000/api/v1/users/${fields.id}`,
+      url: `http://192.168.100.8:8000/api/v1/transfer/${fields.id}`,
       headers: {
         'auth-token': `bearear ${fields.token}`,
       },
@@ -73,21 +73,21 @@ export const GetUsersById = (fields) => {
       .then((res) => {
         const data = res.data;
         console.log(data, 'berhasil');
-        dispatch(UsersSuccess(data));
+        dispatch(TransferSuccess(data));
       })
       .catch((err) => {
         const message = err.message;
-        dispatch(UsersError(message));
+        dispatch(TransferError(message));
       });
   };
 };
 
-export const GetUsers = (fields) => {
+export const GetTransfer = (fields) => {
   return (dispatch) => {
-    dispatch(UsersRequest());
+    dispatch(TransferRequest());
     return Axios({
       method: 'GET',
-      url: `http://192.168.100.8:8000/api/v1/users`,
+      url: `http://192.168.100.8:8000/api/v1/transfer`,
       headers: {
         'auth-token': `bearear ${fields.token}`,
       },
@@ -95,11 +95,11 @@ export const GetUsers = (fields) => {
       .then((res) => {
         const data = res.data;
         console.log(data, 'aaa');
-        dispatch(UsersSuccess(data));
+        dispatch(TransferSuccess(data));
       })
       .catch((err) => {
         const message = err.message;
-        dispatch(UsersError(message));
+        dispatch(TransferError(message));
       });
   };
 };
@@ -108,7 +108,7 @@ export const DeleteUser = (fields) => {
     dispatch(UserDeleteRequest());
     return Axios({
       method: 'DELETE',
-      url: `http://192.168.100.8:8000/api/v1/users/${fields.id}`,
+      url: `https://kpu-wonosobo.et.r.appspot.com/api/v1/panitia/${fields.username}`,
       headers: {
         'access-token': fields.token,
       },
@@ -128,7 +128,7 @@ export const EditUser = (fields) => {
     dispatch(UserEditRequest());
     return Axios({
       method: 'PUT',
-      url: `http://192.168.100.8:8000/api/v1/users`,
+      url: `https://kpu-wonosobo.et.r.appspot.com/api/v1/panitia/`,
       data: {
         id: fields.id,
         tahun: fields.tahun,
@@ -142,7 +142,7 @@ export const EditUser = (fields) => {
       .then((res) => {
         const data = res.data;
         dispatch(UserEditSuccess(data));
-        // fields.history.push('/ngademin');
+        fields.history.push('/ngademin');
       })
       .catch((err) => {
         const message = err.message;

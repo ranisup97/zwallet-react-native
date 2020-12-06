@@ -1,10 +1,11 @@
 import React from 'react'
-import { StyleSheet, Text, View, ScrollView,Image } from 'react-native'
+import { StyleSheet, Text, View, ScrollView,Image, TouchableOpacity } from 'react-native'
 import {Button, IconButton} from 'react-native-paper';
 import { AuthLogout}  from '../../redux/actions/Auth'
 import { GetUsersById}  from '../../redux/actions/Users'
-
+import ImagePicker from 'react-native-image-picker';
 import {useDispatch, useSelector} from 'react-redux';
+import Axios from 'axios'
 const Profile = (props) => {
     // const dispatch = useDispatch();
     const [loading, setLoading] = React.useState(false);
@@ -64,19 +65,69 @@ const Profile = (props) => {
     //     setLogout(false);
     //     }, 1000);
     // };
+
+    const uploadImage  = () => {
+        ImagePicker.showImagePicker({}, (response) => {
+            if (response.didCancel || response.error) {
+                // ketika image tidak di upload
+                alert("you cancelled image picker")
+         
+            }else{
+                const formData = new FormData()
+                formData.append('images',{
+                    uri: response.uri,
+                    name: response.fileName,
+                    type: response.type
+                })  
+       
+                const header = { headers: {
+                    'auth-token': `bearer ${Auth.data.token.token}`,
+                    'Content-Type': 'multipart/form-data',
+                    Accept: 'application/json'
+                }}
+                Axios.patch(`http://192.168.100.4:8000/images/${data.photo}`,formData, header)
+                .then(res => {
+                    console.log(res)
+                    // jika berhasil
+                }).catch(err => {
+                    console.log(err)
+                    // jika gagal upload image dari API/BackEnd
+                })
+               
+               
+            }
+        });
+    }
     
     return (
         <ScrollView style={{backgroundColor: '#F8F9FF', flex:3}}>
             <View>
+            <TouchableOpacity
+          onPress={()=> props.navigation.navigate('Home')}>
                 <Image style={{marginTop: 20, marginLeft: 20 }} source={require('../../assets/images/icons/arrow-left.png')} />
-          
+          </TouchableOpacity>
             </View >
             <View style={{alignItems: 'center', padding: 20}}>
-                <Image source = {require('../../assets/images/michael.png')}/>
+                
+
+            {data ? (
+            <Image
+              source={{uri: `http://192.168.100.4:8000/images/${data.photo}`}}
+              style={styles.image}
+            />
+          ) : (
+            <Image
+              source={{uri: `http://192.168.100.4:8000/images/${data.photo}`}}
+              style={styles.image}
+            />
+          )}
+                {/* <Image source = {require('../../assets/images/michael.png')}/> */}
                 
                 <View style={{padding: 15, flexDirection: 'row' }}>
                     <Image source = {require('../../assets/images/icons/edit-2.png')} style={{marginTop: 5, marginRight:5}}/>
-                    <Text >Edit</Text>
+                    <Text 
+                    onPress={() => uploadImage()}
+                    >Edit</Text>
                 </View>
                 <Text style={{fontWeight: 'bold', fontSize: 18}}>{data.firstName} {data.lastName} </Text>
                 <Text>{`+62 ${data.phone}`}</Text>
@@ -151,4 +202,6 @@ const Profile = (props) => {
 
 export default Profile
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    image: {width: 70, height: 70},
+})
