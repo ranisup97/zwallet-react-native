@@ -37,6 +37,7 @@ const Login = (props) => {
         email: email,
         password: password,
       }),
+      
     );
   };
 
@@ -84,15 +85,15 @@ const Login = (props) => {
     setWidth(390);
   };
 
-  const [register, setRegister] = React.useState(false);
+  // const [register, setRegister] = React.useState(false);
 
-  const onRegister = () => {
-    setRegister(true);
-    setTimeout(() => {
-      props.navigation.navigate('SignUp');
-      setRegister(false);
-    });
-  };
+  // const onRegister = () => {
+  //   setRegister(true);
+  //   setTimeout(() => {
+  //     props.navigation.navigate('SignUp');
+  //     setRegister(false);
+  //   });
+  // };
 
   return (
     <>
@@ -106,6 +107,7 @@ const Login = (props) => {
               Zwallet.
             </Text>
           </View>
+
           <View style={{padding: 15}}>
             <View style={style.inputItem}>
               <Image
@@ -167,27 +169,20 @@ const Login = (props) => {
               <Text style={{textAlign: 'center'}}>Login</Text>
             </TouchableOpacity>
 
-            <Text
-              style={{
-                padding: 15,
-                marginTop: 50,
-                textAlign: 'center',
-                flexDirection: 'row',
-              }}>
-              <TouchableOpacity>
+            
+              
                 <View 
-              style={{flexDirection: 'row'}}>
-                <Text style={{ color: 'black'}}>
+              style={{flexDirection: 'row',marginTop: 40,left: '20%',padding: 30, alignContent: 'center', textAlign: 'center'}}>
+                <Text style={{ color: 'black', textAlign: 'center'}}>
                 Don't have an account? Let's 
                 </Text>
+                <TouchableOpacity>
                 <Text
-                  style={{color: '#6379F4'}}
-                  value={register}
-                  onPress={() => onRegister()}> Sign Up
+                  style={{color: '#6379F4', textAlign: 'center'}}
+                  onPress={() => props.navigation.navigate('SignUp')}> Sign Up
                 </Text>
+                </TouchableOpacity>
                 </View>
-              </TouchableOpacity>
-            </Text>
           </View>
         </View>
       </ScrollView>
@@ -219,19 +214,20 @@ const style = StyleSheet.create({
   },
   hello: {
     marginTop: 10,
-    fontSize: responsiveFontSize(3),
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#444',
     textAlign: 'center',
   },
   helloSpan: {
-    // margin: 10,
-    marginTop: 10,
+    // backgroundColor: 'pink',
+    margin: 15,
+    marginTop: 20,
     textAlign: 'center',
-    padding: 10,
+    // padding: 10,
     paddingLeft: 35,
     paddingRight: 35,
-    fontSize: responsiveFontSize(2),
+    fontSize: 14,
     color: 'grey',
   },
   inputWrap: {

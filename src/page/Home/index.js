@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, View, ScrollView, Image} from 'react-native';
+import {StyleSheet, Text, View, ScrollView, Image, TouchableOpacity} from 'react-native';
 import {Button, IconButton} from 'react-native-paper';
 import Axios from 'axios';
 import {GetUsersById} from '../../redux/actions/Users';
@@ -88,20 +88,21 @@ const Home = (props) => {
       setProfile(false);
     }, 1000);
   };
+  
 
-  console.log(`http://192.168.100.4:8000/images/${data.photo}`)
+  console.log(`http://192.168.100.8:8000/images/${data.photo}`)
   return (
     <>
       <ScrollView>
         <View style={{paddingTop: 20, flexDirection: 'row'}}>
           {data ? (
             <Image
-              source={{uri: `http://192.168.100.4:8000/images/${data.photo}`}}
+              source={{uri: `http://192.168.100.8:8000/images/${data.photo}`}}
               style={styles.image}
             />
           ) : (
             <Image
-              source={{uri: `http://192.168.100.4:8000/images/${data.photo}`}}
+              source={{uri: `http://192.168.100.8:8000/images/${data.photo}`}}
               style={styles.image}
             />
           )}
@@ -188,29 +189,7 @@ const Home = (props) => {
           </View>
         </View>
 
-        <View
-          style={{
-            paddingTop: 20,
-            flexDirection: 'row',
-            backgroundColor: '#fff',
-            marginTop: 20,
-            borderRadius: 25,
-            paddingBottom: 20,
-          }}>
-          <Image
-            source={require('../../assets/images/jessica.png')}
-            style={{marginLeft: 10}}
-          />
-          <View tyle={{marginTop: 10}}>
-            <Text style={{fontSize: 16, marginTop: 10, marginLeft: 10}}>
-              Samuel
-            </Text>
-            <Text style={{marginLeft: 10}}>Transfer</Text>
-          </View>
-          <Text style={{color: '#1EC15F', marginTop: 20, marginLeft: '30%'}}>
-            +Rp50.000
-          </Text>
-        </View>
+        
 
         <View
           style={{
@@ -260,29 +239,7 @@ const Home = (props) => {
           </Text>
         </View>
 
-        <View
-          style={{
-            paddingTop: 20,
-            flexDirection: 'row',
-            backgroundColor: '#fff',
-            marginTop: 20,
-            borderRadius: 25,
-            paddingBottom: 20,
-          }}>
-          <Image
-            source={require('../../assets/images/jessica.png')}
-            style={{marginLeft: 10}}
-          />
-          <View tyle={{marginTop: 10}}>
-            <Text style={{fontSize: 16, marginTop: 10, marginLeft: 10}}>
-              Samuel Suhi
-            </Text>
-            <Text style={{marginLeft: 10}}>Transfer</Text>
-          </View>
-          <Text style={{color: '#1EC15F', marginTop: 20, marginLeft: '30%'}}>
-            +Rp50.000
-          </Text>
-        </View>
+        
       </ScrollView>
     </>
   );
@@ -297,23 +254,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#6379F4',
     borderRadius: 25,
   },
-  image: {width: 50, height: 50},
+  image: {width: 60, height: 60},
   buttonTransfer: {
     backgroundColor: '#E7E3E1',
     width: '45%',
     // height: '30%',
     textTransform: 'lowercase',
     borderRadius: 15,
-    padding: 2,
-    marginTop: 3,
     marginLeft: 10,
   },
   buttonTopup: {
     backgroundColor: '#E7E3E1',
     width: '45%',
     borderRadius: 15,
-    padding: 2,
-    marginTop: 2,
     marginLeft: 10,
   },
 });

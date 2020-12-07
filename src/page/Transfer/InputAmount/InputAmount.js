@@ -1,12 +1,26 @@
 import React from 'react'
 import { StyleSheet, Text, View,Image, ScrollView, TextInput } from 'react-native'
 import {Button} from 'react-native-paper'
+import {useDispatch, useSelector} from 'react-redux';
+import { GetTransfer } from "../../../redux/actions/Transfer";
+import { GetUsersById } from '../../../redux/actions/Users';
 
 const InputAmount = (props) => {
+  const dispatch = useDispatch()
+  const Auth = useSelector((s) => s.Auth);
+  const {data} = useSelector((s)=> s.Users)
+
+  React.useEffect(() => {
+    dispatch(
+      GetUsersById({
+        id: Auth.data.token.id,
+        token: Auth.data.token.token,
+      }),
+    );
+    console.log(data, 'success get by id');
+  }, []);
+
     const [confirm, setConfirm] = React.useState(false);
-
-    
-
         const onConfirm = () => {
             setConfirm(true);
             setTimeout(() => {
@@ -25,7 +39,7 @@ const InputAmount = (props) => {
                 marginTop: 15, borderRadius: 25, paddingBottom: 20}}>
                 <Image source = {require('../../../assets/images/jessica.png')} style={{marginLeft: 10}}/>
                 <View tyle={{marginTop: 10}}>
-                <Text style={{fontSize: 16, marginTop: 10, marginLeft: 10}}>Samuel Suhi</Text>
+                <Text style={{fontSize: 16, marginTop: 10, marginLeft: 10}}>{data.firstName}</Text>
                 <Text style={{marginLeft: 10}}>Transfer</Text>
                 </View>
             </View>
