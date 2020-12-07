@@ -13,6 +13,7 @@ import {GetUsersById} from '../../redux/actions/Users';
 import ImagePicker from 'react-native-image-picker';
 import {useDispatch, useSelector} from 'react-redux';
 import Axios from 'axios';
+import {ChangePhoto} from '../../redux/actions/Update';
 const Profile = (props) => {
   // const dispatch = useDispatch();
   const [loading, setLoading] = React.useState(false);
@@ -20,6 +21,11 @@ const Profile = (props) => {
   const [loadPIN, setLoadPIN] = React.useState(false);
   const [loadNotif, setLoadNotif] = React.useState(false);
   const [logout, setLogout] = React.useState(false);
+  
+  const [selectedUser, setSelectedUser] = React.useState({});
+  const [photo, setPhoto] = React.useState('');
+  const [username, setName] = React.useState('');
+  
   const dispatch = useDispatch();
   console.log(props);
 
@@ -34,6 +40,15 @@ const Profile = (props) => {
     );
     console.log(data, 'ha');
   }, []);
+
+  const selectedItem = (data) => {
+    setSelectedUser(data);
+    console.log('selected', data);
+    setPhoto(data.photo);
+    setName(data.firstName);
+    setButton('Update');
+    setModalVisible(true);
+  };
 
   const onSubmit = () => {
     setLoading(true);
@@ -82,7 +97,7 @@ const Profile = (props) => {
         alert('you cancelled image picker');
       } else {
         const formData = new FormData();
-        formData.append('images', {
+        formData.append('photo', {
           uri: response.uri,
           name: response.fileName,
           type: response.type,
@@ -96,17 +111,17 @@ const Profile = (props) => {
           },
         };
         Axios.patch(
-          `http://192.168.100.8:8000/images/${data.photo}`,
+          `http://192.168.100.8:8000/api/v1/image/${Auth.data.token.id}`,
           formData,
           header,
         )
-          .then((res) => {
-            console.log(res);
-            // jika berhasil
-          })
-          .catch((err) => {
-            console.log(err);
-            // jika gagal upload image dari API/BackEnd
+        .then((response) => {
+          console.log('upload succes', response);
+          alert('Upload success!');
+        })
+          .catch((error) => {
+            console.log('upload error', error);
+            alert('Upload failed!');
           });
       }
     });
@@ -141,7 +156,8 @@ const Profile = (props) => {
             source={require('../../assets/images/icons/edit-2.png')}
             style={{marginTop: 5, marginRight: 5}}
           />
-          <Text onPress={() => uploadImage()}>Edit</Text>
+          <Text onPress={() => uploadImage()}
+          >Edit</Text>
         </View>
         <Text style={{fontWeight: 'bold', fontSize: 18}}>
           {data.firstName} {data.lastName}{' '}
@@ -156,14 +172,16 @@ const Profile = (props) => {
             borderRadius: 10,
             marginTop: 40,
           }}>
-          <Button
+          <TouchableOpacity
+          style={{padding: 15}}
             onPress={() => onSubmit()}
             disabled={loading}
             autoCapitalize={'none'}
             loading={loading}
-            color="grey">
-            <Text>Personal Information</Text>
-          </Button>
+            
+            >
+            <Text style={{color: 'black', fontSize: 16}}>Personal Information</Text>
+          </TouchableOpacity>
           <Image
             style={{position: 'absolute', right: '0%', right: 10, top: 5}}
             source={require('../../assets/images/icons/arrow-right.png')}
@@ -178,14 +196,15 @@ const Profile = (props) => {
             borderRadius: 10,
             marginTop: 20,
           }}>
-          <Button
+          <TouchableOpacity
+          style={{padding: 15}}
             onPress={() => onSubmitPassword()}
             disabled={load}
             autoCapitalize="none"
             loading={load}
             color="grey">
-            <Text style={{textAlign: 'left'}}>Change Password</Text>
-          </Button>
+            <Text style={{textAlign: 'left', color: 'black', fontSize: 16}}>Change Password</Text>
+          </TouchableOpacity>
           <Image
             style={{position: 'absolute', right: '0%', right: 10, top: 5}}
             source={require('../../assets/images/icons/arrow-right.png')}
@@ -200,14 +219,14 @@ const Profile = (props) => {
             borderRadius: 10,
             marginTop: 20,
           }}>
-          <Button
+          <TouchableOpacity
+          style={{padding: 15}}
             onPress={() => onSubmitPIN()}
             disabled={loadPIN}
             autoCapitalize="none"
-            loading={loadPIN}
-            color="grey">
-            <Text>Change PIN</Text>
-          </Button>
+            loading={loadPIN}>
+            <Text style={{textAlign: 'left', color: 'black', fontSize: 16}}>Change PIN</Text>
+          </TouchableOpacity>
           <Image
             style={{position: 'absolute', right: '0%', right: 10, top: 5}}
             source={require('../../assets/images/icons/arrow-right.png')}
@@ -222,14 +241,15 @@ const Profile = (props) => {
             borderRadius: 10,
             marginTop: 20,
           }}>
-          <Button
+          <TouchableOpacity
+          style={{padding: 15}}
             onPress={() => onSubmitNotif()}
             disabled={loadNotif}
             autoCapitalize="none"
             loading={loadNotif}
             color="grey">
-            <Text>Notification</Text>
-          </Button>
+            <Text style={{textAlign: 'left', color: 'black', fontSize: 16}}>Notification</Text>
+          </TouchableOpacity>
           <Image
             style={{position: 'absolute', right: '0%', right: 10, top: 5}}
             source={require('../../assets/images/icons/off.png')}
@@ -244,14 +264,12 @@ const Profile = (props) => {
             borderRadius: 10,
             marginTop: 20,
           }}>
-          <Button
+          <TouchableOpacity
+          style={{padding: 15}}
             onPress={() => onLogout()}
-            // disabled={logout}
-            // loading={logout}
-            textTransform="lowercase"
             color="grey">
-            <Text>Logout</Text>
-          </Button>
+            <Text style={{textAlign: 'left', color: 'black', fontSize: 16}}>Logout</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </ScrollView>

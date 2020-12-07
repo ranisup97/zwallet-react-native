@@ -28,7 +28,7 @@ export const UpdatePhone = (fields) => {
       data: {
         phone: fields.phone,
       },
-      url: `http://192.168.1.116:5000/api/v1/profile/updatephone/${fields.id_profile}`,
+      url: `http://192.168.1.116:5000/api/v1/profile/updatephone/${fields.id}`,
       headers: {
         authorization: `Bearer + ${fields.token}`,
       },
@@ -120,7 +120,7 @@ export const UpdateUser = (fields) => {
       data: {
         username: fields.username,
       },
-      url: `http://192.168.1.116:5000/api/v1/profile/${fields.id_profile}`,
+      url: `http://192.168.1.116:5000/api/v1/profile/${fields.id}`,
       headers: {
         authorization: `Bearer + ${fields.token}`,
       },
@@ -165,7 +165,7 @@ export const UpdatePin = (fields) => {
       data: {
         pin: fields.pin,
       },
-      url: `http://192.168.1.116:5000/api/v1/profile/changepin/${fields.id_profile}`,
+      url: `http://192.168.1.116:5000/api/v1/profile/changepin/${fields.id}`,
       headers: {
         authorization: `Bearer + ${fields.token}`,
       },
@@ -202,7 +202,7 @@ const ChangePhotoError = (error) => {
   };
 };
 
-export const ChangePhoto = (fields) => {
+export const ChangePhoto = (fields, id) => {
   return (dispatch) => {
     dispatch(ChangePhotoRequest());
     return Axios({
@@ -210,15 +210,15 @@ export const ChangePhoto = (fields) => {
       data: {
         photo: fields.photo,
       },
-      url: `http://192.168.1.116:5000/api/v1/profile/photo/${fields.id_profile}`,
-      headers: {
+      url: `http://192.168.100.8:8000/api/v1/image/${id}`,
+            headers: {
         Authorization: `Bearer + ${fields.token}`,
         'Content-Type': 'multipart/form-data',
         Accept: 'application/json',
       },
     })
       .then((res) => {
-        const data = res.data;
+        const data = res.data.data;
         console.log(data, 'dat');
         dispatch(ChangePhotoSuccess(data));
         ToastAndroid.show(`Update Photo Successfully`, ToastAndroid.SHORT);
