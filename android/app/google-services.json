@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "690208377494",
+    "project_id": "zwallet-reactnative",
+    "storage_bucket": "zwallet-reactnative.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:690208377494:android:777a2099845e5381d450b7",
+        "android_client_info": {
+          "package_name": "com.zwallet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "690208377494-hio6k0b45350t8t0oejk5f8ivd5807t9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZdOKlUlt21RxZXPOlWPvPB_Rs9UI40Ow"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "690208377494-hio6k0b45350t8t0oejk5f8ivd5807t9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

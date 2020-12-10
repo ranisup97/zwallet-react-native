@@ -70,10 +70,10 @@ const PersonalInformation = (props) => {
           marginTop: 20,
         }}>
         <View>
-          <Text style={{color: '#7A7886'}}>Verified E-mail</Text>
-          <Text style={{fontWeight: 'bold'}}>{data.email}</Text>
+          <Text style={{color: '#7A7886'}}>Phone Number</Text>
+          <Text style={{fontWeight: 'bold'}}>{`+62 ${data.phone}`}</Text>
         </View>
-        <View style={{marginLeft: '40%'}}>
+        <View style={{position: 'absolute',right: 0, top: 20, right: 20}}>
           <Text style={{color: '#6379F4'}}>Manage</Text>
         </View>
       </View>
