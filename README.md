@@ -28,4 +28,6 @@ npm install;
 npx react-native run-android;
 
 ```
+
+![WhatsApp Image 2020-12-07 at 09 42 44 (4)](https://user-images.githubusercontent.com/51501974/102959197-74b96600-4511-11eb-93f5-680805caccbc.jpeg)
  
