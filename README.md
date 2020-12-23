@@ -20,7 +20,7 @@ ZWallet also arranges so that you can still use the funds to pay for various nee
   - NPM or Yarn as package manager
   - react native
   
-### HOW TO INSTALL
+### `How To Install`
 Download the projects: 
 ```bash
 git clone https://github.com/ranisup97/zwallet-react-native;
