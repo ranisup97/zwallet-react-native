@@ -1,6 +1,6 @@
 <h1 align="center">
 	<a href="#">
-		ZWallet
+		ZWallet Mobile
 	</a>
 </h1>
 
@@ -12,7 +12,6 @@ ZWallet also arranges so that you can still use the funds to pay for various nee
 ### `Features Available`
 
 - Transfer
-
 * Top Up
 
 ### `Prerequisites`
@@ -21,10 +20,12 @@ ZWallet also arranges so that you can still use the funds to pay for various nee
   - NPM or Yarn as package manager
   - react native
   
-  ### # HOW TO INSTALL
+### HOW TO INSTALL
 Download the projects: 
 ```bash
-~$ git clone https://github.com/ranisup97/zwallet-react-native;
+git clone https://github.com/ranisup97/zwallet-react-native;
+npm install;
+npx react-native run-android;
 
 ```
  
